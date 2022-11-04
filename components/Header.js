@@ -29,7 +29,7 @@ export default function Header() {
       <img src="./asset/image1.png" alt="" />
     </div>
     <div className="box2">
-      <h2>"Faisons grandir nos projet ensemble"</h2>
+      <h2>"Faisons grandir nos projets ensemble"</h2>
     </div>
   </header>
   )
