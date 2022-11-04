@@ -2,9 +2,11 @@ import Layout from '../components/Layout'
 import '../styles/globals.css'
 import "../styles/index.scss"
 import Script from 'next/script'
-import AnimatedCursor from "react-animated-cursor";
-
+import dynamic from 'next/dynamic'
 function MyApp({ Component, pageProps }) {
+  const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
+    ssr: false
+  });
   return(
 
   <>
