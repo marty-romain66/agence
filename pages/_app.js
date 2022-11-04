@@ -33,10 +33,21 @@ function MyApp({ Component, pageProps }) {
           "p",
         ]}
       />
-  
-  
-  <Layout>
+    <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-Q13HD48W82`}
+      />
 
+      <Script strategy="lazyOnload">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-Q13HD48W82');
+        `}
+      </Script>
+    <Layout>
       <Component {...pageProps} />
 
     </Layout></>
