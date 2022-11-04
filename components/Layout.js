@@ -1,7 +1,9 @@
 import React from 'react'
+import Header from './Header'
 
-export default function Layout() {
+export default function Layout({ children }) {
   return (
-    <div style={{color:"white"}}>Layout</div>
+  <><Header /><section> {children} </section></>
+
   )
 }
