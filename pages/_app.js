@@ -1,56 +1,14 @@
 import Layout from '../components/Layout'
-import '../styles/globals.css'
-import "../styles/index.scss"
-import Script from 'next/script'
-import dynamic from 'next/dynamic'
+import '../styles/index.scss'
+import "../styles/header.scss"
+import "../styles/footer.scss"
+import "../styles/services.scss"
 function MyApp({ Component, pageProps }) {
-  const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
-    ssr: false
-  });
-  return(
+  return (
+    <Layout  >
+  <Component {...pageProps} />
+  </Layout>
 
-  <>
-    <AnimatedCursor
-        innerSize={8}
-        outerSize={50}
-        color="193, 11, 111"
-        outerAlpha={0.2}
-        innerScale={0.7}
-        outerScale={1.8}
-        clickables={[
-          "a",
-          'input[type="text"]',
-          'input[type="email"]',
-          'input[type="number"]',
-          'input[type="submit"]',
-          'input[type="image"]',
-          "label[for]",
-          "select",
-          "textarea",
-          "button",
-          ".link",
-          "h2",
-          "p",
-        ]}
-      />
-    <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-Q13HD48W82`}
-      />
-
-      <Script strategy="lazyOnload">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-Q13HD48W82');
-        `}
-      </Script>
-    <Layout>
-      <Component {...pageProps} />
-
-    </Layout></>
   )
 }
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import About from '../components/About'
+import Encour from '../components/Encour'
 
 export default function about() {
   return (
-    <About/>
+    <Encour/>
   )
 }

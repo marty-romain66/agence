@@ -1,36 +1,105 @@
-import React from 'react'
-import styles from "../styles/Home.module.css";
-import { gsap } from "gsap";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+
 export default function Header() {
+  const [toggle, setToggle] = React.useState(false);
   const router = useRouter();
-  const handleClick = (e) => {
+  const handleClickS = (e) => {
+    e.preventDefault();
+    router.push("/services");
+    setToggle(false);
+  };
+  const handleClickP = (e) => {
+    e.preventDefault();
+    router.push("/project");
+    setToggle(false);
+  };
+  const handleClickA = (e) => {
+    e.preventDefault();
+    router.push("/about");
+    setToggle(false);
+  };
+  const handleClickC = (e) => {
+    e.preventDefault();
+    router.push("/contact");
+    setToggle(false);
+  };
+  const handleClickH = (e) => {
     e.preventDefault();
     router.push("/");
-  };
-  const text = "Romain Marty Développeur Web";
-  const text2 = () => {
-    // create span for each letter
-    const letters = text.split("").map((letter, index) => {
-      return (
-        <span key={index} id="gsap" className={styles.letter}>
-          {letter}
-        </span>
-      );
-    });
-    return letters;
+    setToggle(false);
   };
   return (
-    <header>
-    <div className="box">
-      <a onClick={handleClick} href='/' className="boxCenterY">
-        <h1>{text2()}</h1>
-      </a>
-      <img src="./asset/image1.png" alt="" />
-    </div>
-    <div className="box2">
-      <h2>"Faisons grandir nos projets ensemble"</h2>
-    </div>
-  </header>
-  )
+    <>
+      {toggle ? (
+        <div className="boxToggle" >
+          <div className="boxToggle__card">
+            <a href="" onClick={handleClickH}>
+              Home
+            </a>
+          </div>
+          <div className="boxToggle__card">
+            <a href="" onClick={handleClickS}>
+              Services
+            </a>
+          </div>
+          <div className="boxToggle__card">
+            <a href="" onClick={handleClickA}>
+              About
+            </a>
+          </div>
+          <div className="boxToggle__card">
+            <a href="" onClick={handleClickC}>
+              Contact
+            </a>
+          </div>
+        </div>
+      ) : null}
+
+      <header>
+        <div className="boxTitle">
+          <h1>Romain Marty</h1>
+        </div>
+        <div className="navBarMedia">
+          <IconButton
+          onClick={()=>setToggle(!toggle)}
+          className="navBarMedia__media
+          "
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2}}
+          >
+            <MenuIcon />
+          </IconButton>
+        </div>
+        <div className="navBar">
+          <ul>
+            <li>
+              <a href="" onClick={handleClickH}>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="" onClick={handleClickS}>
+                Services
+              </a>
+            </li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <p onClick={() => setToggle(!toggle)}>Contact</p>
+            </li>
+          </ul>
+        </div>
+      </header>
+    </>
+  );
 }

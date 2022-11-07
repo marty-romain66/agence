@@ -1,8 +1,8 @@
 import React from 'react'
-import Contact from '../components/Contact'
+import Encour from '../components/Encour'
 
 export default function contact() {
   return (
-    <Contact/>
+    <Encour/>
   )
 }
